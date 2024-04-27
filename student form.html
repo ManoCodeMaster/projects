@@ -1,0 +1,33 @@
+<div align="center">
+<h1> Student Form </h1>
+<table border="1">
+    <tr><th>Name</th><td><input id='name'></td></tr>
+    <tr><th>Age</th><td><input id='age'></td></tr>
+    <tr><th>Gender</th><td><input type='radio' name='gender' value="Male">Male<input type='radio' name='gender' value="Female">Female</td></tr>
+    <tr><th>Course</th><td><input id='course'></td></tr>
+    <tr><th>Email</th><td><input id='email'></td></tr>
+    <tr><td colspan='2' align="center"><Button width="100%" onclick="save()">Save</Button></td></tr>
+</table><br>
+<table border="1" id="insert">
+    <tr><th>Name</th><th>Age</th><th>Gender</th><th>Course</th><th>Email</th><th>Action</th></tr>
+</table>
+</div>
+<script>
+    
+    function save(){
+        var name=document.getElementById('name')
+        var age=document.getElementById('age')
+        var gender=document.querySelector('input[name="gender"]:checked')
+        var genderValue=gender ? gender.value:""
+        var course=document.getElementById('course')
+        var email=document.getElementById('email')
+        var tr=document.createElement('tr')
+        tr.innerHTML="<td>"+name.value+"</td><td>"+age.value+"</td><td>"+genderValue+"</td><td>"+course.value+"</td><td>"+email.value+"</td><td><button onclick='deleteItem(event)'>Delete</button>"
+        insert.append(tr)    
+    }
+    function deleteItem(event){
+        var insert=document.getElementById('insert')
+          event.target.parentElement.parentElement.remove()
+    }
+
+</script>
